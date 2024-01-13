@@ -1,5 +1,6 @@
 #pragma once
 #include "Engine/GameObject.h"
+#include "time.h"
 
 class Player : public GameObject
 {
@@ -7,8 +8,16 @@ private:
 	int hModel;
 	int hstage;
 
+	float jumpHeight;  //ジャンプの高さ
+	float jumpSpeed;   //ジャンプの速さ
+	bool isJumping;    //ジャンプ中かのフラグ
+	float jumpDistance; //ジャンプ距離を表すメンバ変数
+
 	Transform ptrans;
 	Transform strans;
+
+	//ジャンプ処理
+	void Jump();
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
@@ -19,6 +28,9 @@ public:
 
 	//更新
 	void Update() override;
+
+	//ジャンプ開始
+	void StartJump();
 
 	//描画
 	void Draw() override;
