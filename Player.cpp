@@ -3,74 +3,91 @@
 #include "Engine/Input.h"
 #include <DirectXMath.h>
 
+//コンストラクタ
 Player::Player(GameObject* parent)
-	: GameObject(parent, "TestScene"), hModel(-1), jumpHeight(2.0f), jumpSpeed(5.0f), jumpDistance(1.0f), fallDistance(1.0f), isJumping(false)
+	: GameObject(parent, "TestScene"), hModel_(-1), gravity_(-0.3), jumpCool_(0), jumpVelocity_(1.0)
 {
 }
 
+//初期化
 void Player::Initialize()
 {
-	hModel = Model::Load("Slime.fbx");
-
-	
-
+	hModel_ = Model::Load("Slime.fbx");
 }
 
+//更新
 void Player::Update()
 {
-	ptrans.position_.y += jumpDistance * isJumping;
+	Jump();
 
-	if (Input::IsKeyDown(DIK_SPACE) && !isJumping)
+	if (Input::IsKeyUp(DIK_RETURN))
 	{
-		StartJump();
-	}
-
-	if (isJumping)
-	{
-		Jump();
-	}
-	else if (!isJumping && ptrans.position_.y > 0.0f)
-	{
-		float fallDistance = jumpSpeed * Time::GetDeltaTime();
-		ptrans.position_.y -= fallDistance;
+		static int cnt = 0;
+		cnt++;
+		if (cnt >= 1)
+		{
+			PostQuitMessage(0);
+		}
 	}
 }
 
-void Player::StartJump()
-{
-	isJumping = true;
-}
-
-void Player::Jump()
-{
-	//ジャンプ中の処理
-	float jumpDistance = jumpSpeed * Time::GetDeltaTime();
-
-
-	//上方向に移動
-	XMVECTOR jumpVector = XMVectorSet(0.0f, jumpDistance, 0.0f, 0.0f);
-
-	if (ptrans.position_.y >= jumpHeight)
-	{	
-		isJumping = false;
-		ptrans.position_.y = jumpHeight;  //ジャンプ中の高さに位置を設定
-	}
-	else
-	{
-		ptrans.position_.y += jumpDistance;  //ジャンプ中は上に移動
-	}
-
-	
-}
-
+//描画
 void Player::Draw()
 {
-	Model::SetTransform(hModel, ptrans);
-	Model::Draw(hModel);
+	Model::SetTransform(hModel_, ptrans_);
+	Model::Draw(hModel_);
 
 	
 }
 
+//開放
 void Player::Release()
 {
+}
+
+//ジャンプ処理
+void Player::Jump()
+{
+	float velocity = 5.0f;    //初速度
+	float delta = 0.02f;      //適当な小さな値
+	gravity_ = -9.81;         //重力
+	static bool isJump_ = true;   //ジャンプできるか
+	static float jumpTime = 0.0f; //ジャンプの経過時間
+
+	//ジャンプが可能な場合
+	if (Input::IsKeyDown(DIK_SPACE) && isJump_)
+	{
+		jumpTime = 0.3f;
+		isJump_ = false;    //連続ジャンプ防止のため、ジャンプフラグを無効化
+	}
+
+	if (!jflag && isJump_)
+	{
+		jumpTime = 0.3f;
+		isJump_ = false;    //連続ジャンプ防止のため、ジャンプフラグを無効化
+	}
+
+	if (!isJump_)
+	{
+		//ジャンプしてからの経過時間
+		jumpTime += delta;
+
+		//鉛直投げ上げ運動
+		float pos = velocity * jumpTime + 0.3f * gravity_ * jumpTime * jumpTime;
+		ptrans_.position_.y = pos + 1;
+
+		//落下
+		velocity += gravity_ * delta;
+
+		//地面に着地したとき
+		if (ptrans_.position_.y <= 0)
+		{
+			if (jflag) {
+				ptrans_.position_.y = 0;    //地面に合わせる
+				isJump_ = true;             //ジャンプ可能にする
+			}
+			else if (!jflag) {}
+		}
+	}
+
 }
