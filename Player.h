@@ -6,15 +6,16 @@ class Player : public GameObject
 {
 private:
 	int hModel;
-	int hstage;
+	
 
 	float jumpHeight;  //ジャンプの高さ
 	float jumpSpeed;   //ジャンプの速さ
 	bool isJumping;    //ジャンプ中かのフラグ
 	float jumpDistance; //ジャンプ距離を表すメンバ変数
+	float fallDistance;
 
 	Transform ptrans;
-	Transform strans;
+	
 
 	//ジャンプ処理
 	void Jump();
