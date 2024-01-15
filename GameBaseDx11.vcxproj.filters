@@ -100,7 +100,6 @@
       <Filter>01Engine\ResourceManager</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Time.cpp" />
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="Stage.cpp" />
   </ItemGroup>
@@ -176,7 +175,6 @@
       <Filter>01Engine\ResourceManager</Filter>
     </ClInclude>
     <ClInclude Include="Player.h" />
-    <ClInclude Include="Time.h" />
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="Stage.h" />
   </ItemGroup>

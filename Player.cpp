@@ -1,7 +1,6 @@
 #include "Player.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
-#include <DirectXMath.h>
 
 //コンストラクタ
 Player::Player(GameObject* parent)
@@ -18,7 +17,7 @@ void Player::Initialize()
 //更新
 void Player::Update()
 {
-	Jump();
+	Jump(angle);
 
 	if (Input::IsKey(DIK_RIGHT))
 	{
@@ -55,7 +54,7 @@ void Player::Release()
 }
 
 //ジャンプ処理
-void Player::Jump()
+void Player::Jump(float angle)
 {
 	float velocity = 5.0f;    //初速度
 	float delta = 0.02f;      //適当な小さな値
@@ -84,6 +83,8 @@ void Player::Jump()
 		//鉛直投げ上げ運動
 		float pos = velocity * jumpTime + 0.3f * gravity_ * jumpTime * jumpTime;
 		ptrans_.position_.y = pos + 1;
+
+		ptrans_.position_.x += velocity * cos(angle) * delta;
 
 		//落下
 		velocity += gravity_ * delta;

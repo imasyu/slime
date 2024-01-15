@@ -1,6 +1,5 @@
 #pragma once
 #include "Engine/GameObject.h"
-#include "time.h"
 
 class Player : public GameObject
 {
@@ -11,11 +10,9 @@ private:
 	float jumpVelocity_;  //ジャンプの速度
 	float jumpCool_;      //ジャンプ(クールタイム)
 	float gravity_;       //重力
-
+	float angle = DirectX::XMConvertToRadians(10);
 
 	Transform ptrans_;
-	
-
 	
 public:
 	//コンストラクタ
@@ -35,6 +32,6 @@ public:
 	void Release() override;
 
 	//ジャンプ処理
-	void Jump();
+	void Jump(float angle);
 };
 
