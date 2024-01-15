@@ -20,6 +20,15 @@ void Player::Update()
 {
 	Jump();
 
+	if (Input::IsKey(DIK_RIGHT))
+	{
+		ptrans_.position_.x += 0.2f;
+	}
+	if (Input::IsKey(DIK_LEFT))
+	{
+		ptrans_.position_.x -= 0.2f;
+	}
+
 	if (Input::IsKeyUp(DIK_RETURN))
 	{
 		static int cnt = 0;
