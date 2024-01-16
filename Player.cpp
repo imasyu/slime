@@ -17,7 +17,7 @@ void Player::Initialize()
 //更新
 void Player::Update()
 {
-	Jump(DirectX::XMConvertToRadians(45.0f));
+	Jump(angle);
 
 	if (Input::IsKey(DIK_RIGHT))
 	{
@@ -75,9 +75,8 @@ void Player::Jump(float angle)
 
 		ptrans_.position_.y += pos;
 
-		ptrans_.position_.x += 0;
+		ptrans_.position_.x += 0.05;
 
-		ptrans_.position_.x += velocity * cos(angle) * delta;
 
 		//地面に着地したとき
 		if (ptrans_.position_.y <= 0)
