@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
+#include "Engine/Camera.h"
 
 //コンストラクタ
 Player::Player(GameObject* parent)
@@ -18,6 +19,10 @@ void Player::Initialize()
 void Player::Update()
 {
 	Jump(angle);
+
+
+	Camera::SetPosition(XMFLOAT3(0, 3, -8));
+	Camera::SetTarget(ptrans_.position_);
 
 	if (Input::IsKey(DIK_RIGHT))
 	{
@@ -57,9 +62,15 @@ void Player::Release()
 void Player::Jump(float angle)
 {
 	gravity_ = 0.02f;         //重力
+	
 
+	if (Input::IsKeyUp(DIK_SPACE))
+	{
+		movex += 0.01;
+	}
+	
 	//前回までジャンプしていないとき
-	if (Input::IsKeyDown(DIK_SPACE) && !isJumping_)
+	if (Input::IsKeyUp(DIK_SPACE) && !isJumping_)
 	{
 		velocity = 0.4f;
 		isJumping_ = true;  //ジャンプしている
@@ -75,7 +86,7 @@ void Player::Jump(float angle)
 
 		ptrans_.position_.y += pos;
 
-		ptrans_.position_.x += 0.05;
+		ptrans_.position_.x += movex;
 
 
 		//地面に着地したとき

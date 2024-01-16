@@ -13,6 +13,7 @@ private:
 
 	float velocity = 5.0f;  //上方向の加速度
 	float delta = 0.02f;    //適当な小さな値
+	float movex = 0.0f;
 
 	bool isJumping_ = false;   //ジャンプしているかどうか
 	float jumpTime = 0.0f;     //ジャンプの経過時間
