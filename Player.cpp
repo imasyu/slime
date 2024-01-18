@@ -2,6 +2,7 @@
 #include "Engine/Model.h"
 #include "Engine/Input.h"
 #include "Engine/Camera.h"
+#include "Engine/SphereCollider.h"
 
 //コンストラクタ
 Player::Player(GameObject* parent)
@@ -13,6 +14,11 @@ Player::Player(GameObject* parent)
 void Player::Initialize()
 {
 	hModel_ = Model::Load("Slime.fbx");
+
+	ptrans_.position_.x = -3;
+
+	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0, 0), 0.5f);
+	AddCollider(collision);
 }
 
 //更新
@@ -97,3 +103,4 @@ void Player::Jump(float angle)
 		}
 	}
 }
+
