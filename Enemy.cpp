@@ -15,7 +15,7 @@ void Enemy::Initialize()
 
 	Model::SetAnimFrame(henemy_, 1, 60, 1);
 
-	BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(1, 1, 1));
+	BoxCollider* collision = new BoxCollider(etrans_.position_, XMFLOAT3(1, 2, 1));
 	AddCollider(collision);
 }
 

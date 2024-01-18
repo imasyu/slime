@@ -17,8 +17,8 @@ void Player::Initialize()
 
 	ptrans_.position_.x = -3;
 
-	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0, 0), 0.5f);
-	AddCollider(collision);
+	SphereCollider* scollision = new SphereCollider(ptrans_.position_, 1.0f);
+	AddCollider(scollision);
 }
 
 //çXêV
