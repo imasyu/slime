@@ -15,9 +15,9 @@ void Player::Initialize()
 {
 	hModel_ = Model::Load("Slime.fbx");
 
-	ptrans_.position_.x = -3;
+	ptrans_.position_.x = -4;
 
-	SphereCollider* collision = new SphereCollider(ptrans_.position_, (1.5f));
+	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0, 0), (0.8f));
 	AddCollider(collision);
 
 }
@@ -27,20 +27,20 @@ void Player::Update()
 {
 	Jump(angle);
 
-	
+	transform_ = ptrans_;
 
 	Camera::SetPosition(XMFLOAT3(0, 3, -8));
-	Camera::SetTarget(ptrans_.position_);
+	Camera::SetTarget(transform_.position_);
 
 
-	if (Input::IsKey(DIK_RIGHT))
+	/*if (Input::IsKey(DIK_RIGHT))
 	{
 		ptrans_.position_.x += 0.2f;
 	}
 	if (Input::IsKey(DIK_LEFT))
 	{
 		ptrans_.position_.x -= 0.2f;
-	}
+	}*/
 
 	if (Input::IsKeyUp(DIK_RETURN))
 	{

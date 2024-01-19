@@ -16,17 +16,14 @@ void Enemy::Initialize()
 
 	Model::SetAnimFrame(henemy_, 1, 60, 1);
 
-	BoxCollider* collision = new BoxCollider(etrans_.position_, XMFLOAT3(1, 2, 1));
+	BoxCollider* collision = new BoxCollider(etrans_.position_, XMFLOAT3(0.4, 1, 0));
 	AddCollider(collision);
 }
 
 //çXêV
 void Enemy::Update()
 {
-	if (Input::IsKey(DIK_RIGHT))
-	{
-		etrans_.position_.x += 0.2f;
-	}
+	
 }
 
 //ï`âÊ
