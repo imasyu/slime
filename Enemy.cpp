@@ -1,6 +1,7 @@
 #include "Enemy.h"
 #include "Engine/Model.h"
 #include "Engine/BoxCollider.h"
+#include "Engine/Input.h"
 
 //コンストラクタ
 Enemy::Enemy(GameObject* parent)
@@ -22,6 +23,10 @@ void Enemy::Initialize()
 //更新
 void Enemy::Update()
 {
+	if (Input::IsKey(DIK_RIGHT))
+	{
+		etrans_.position_.x += 0.2f;
+	}
 }
 
 //描画
@@ -40,7 +45,7 @@ void Enemy::Release()
 void Enemy::OnCollision(GameObject* pTarget)
 {
 	//当たった時の処理
-	if (pTarget->GetObjectName() == "Slime")
+	if (pTarget->GetObjectName() == "Player")
 	{
 		KillMe();
 	}

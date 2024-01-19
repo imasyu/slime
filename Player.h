@@ -5,6 +5,7 @@ class Player : public GameObject
 {
 private:
 	int hModel_;
+	XMFLOAT3 move_;
 	bool jflag = true;
 
 	float jumpVelocity_;  //ƒWƒƒƒ“ƒv‚Ì‘¬“x

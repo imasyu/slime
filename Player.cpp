@@ -6,7 +6,7 @@
 
 //コンストラクタ
 Player::Player(GameObject* parent)
-	: GameObject(parent, "TestScene"), hModel_(-1), jumpCool_(0), jumpVelocity_(1.0)
+	: GameObject(parent, "Player"), hModel_(-1), jumpCool_(0), jumpVelocity_(1.0)
 {
 }
 
@@ -17,8 +17,9 @@ void Player::Initialize()
 
 	ptrans_.position_.x = -3;
 
-	SphereCollider* scollision = new SphereCollider(ptrans_.position_, 1.0f);
-	AddCollider(scollision);
+	SphereCollider* collision = new SphereCollider(ptrans_.position_, (1.5f));
+	AddCollider(collision);
+
 }
 
 //更新
@@ -26,9 +27,11 @@ void Player::Update()
 {
 	Jump(angle);
 
+	
 
 	Camera::SetPosition(XMFLOAT3(0, 3, -8));
 	Camera::SetTarget(ptrans_.position_);
+
 
 	if (Input::IsKey(DIK_RIGHT))
 	{
