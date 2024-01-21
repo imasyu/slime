@@ -29,18 +29,21 @@ void Player::Update()
 
 	transform_ = ptrans_;
 
-	Camera::SetPosition(XMFLOAT3(0, 3, -8));
-	Camera::SetTarget(transform_.position_);
+	Camera::SetTarget(ptrans_.position_);
+	XMFLOAT3 camPos = ptrans_.position_;
+	camPos.y += 0;
+	camPos.z -= 10;
+	camPos.x -= 0;
+	Camera::SetPosition(camPos);
 
-
-	/*if (Input::IsKey(DIK_RIGHT))
+	if (Input::IsKey(DIK_RIGHT))
 	{
 		ptrans_.position_.x += 0.2f;
 	}
 	if (Input::IsKey(DIK_LEFT))
 	{
 		ptrans_.position_.x -= 0.2f;
-	}*/
+	}
 
 	if (Input::IsKeyUp(DIK_RETURN))
 	{
