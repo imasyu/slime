@@ -5,7 +5,7 @@
 class Stage : public GameObject
 {
 private:
-    int hstage;
+    int hstage[2];
 
     Transform strans;
 public:

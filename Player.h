@@ -12,7 +12,7 @@ private:
 	float jumpCool_;      //ジャンプ(クールタイム)
 	float gravity_;       //重力加速度
 
-	float velocity = 5.0f;  //上方向の加速度
+	float velocity = 0.0f;  //上方向の加速度
 	float delta = 0.02f;    //適当な小さな値
 	float movex = 0.0f;
 
