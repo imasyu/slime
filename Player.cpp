@@ -3,6 +3,7 @@
 #include "Engine/Input.h"
 #include "Engine/Camera.h"
 #include "Engine/SphereCollider.h"
+#include "Engine/SceneManager.h"
 
 //コンストラクタ
 Player::Player(GameObject* parent)
@@ -36,14 +37,14 @@ void Player::Update()
 	camPos.x -= 0;
 	Camera::SetPosition(camPos);
 
-	if (Input::IsKey(DIK_RIGHT))
+	/*if (Input::IsKey(DIK_RIGHT))
 	{
 		ptrans_.position_.x += 0.2f;
 	}
 	if (Input::IsKey(DIK_LEFT))
 	{
 		ptrans_.position_.x -= 0.2f;
-	}
+	}*/
 
 	if (Input::IsKeyUp(DIK_RETURN))
 	{
@@ -107,6 +108,10 @@ void Player::Jump(float angle)
 			ptrans_.position_.y = 0;   //地面に合わせる
 			isJumping_ = false;
 		}
+		else if (ptrans_.position_.y < 0) {
+			velocity += gravity_;
+		}
+			
 	}
 }
 
