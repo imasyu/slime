@@ -12,7 +12,9 @@ Enemy::Enemy(GameObject* parent)
 //‰Šú‰»
 void Enemy::Initialize()
 {
-	henemy_ = Model::Load("Enemy.fbx");
+	henemy_ = Model::Load("Enemy1.fbx");
+
+	etrans_.position_.y = 3;
 
 	Model::SetAnimFrame(henemy_, 1, 60, 1);
 
