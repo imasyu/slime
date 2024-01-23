@@ -42,6 +42,5 @@ public:
 	//ƒWƒƒƒ“ƒvˆ—
 	void Jump(float angle);
 
-	
 };
 

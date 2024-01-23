@@ -33,18 +33,9 @@ void Player::Update()
 	Camera::SetTarget({ ptrans_.position_.x, 0, ptrans_.position_.z });
 	XMFLOAT3 camPos = ptrans_.position_;
 	camPos.y = 4;
-	camPos.z -= 20;
-	camPos.x = 0;
+	camPos.z = -20;
+	camPos.x = ptrans_.position_.x;
 	Camera::SetPosition(camPos);
-
-	/*if (Input::IsKey(DIK_RIGHT))
-	{
-		ptrans_.position_.x += 0.2f;
-	}
-	if (Input::IsKey(DIK_LEFT))
-	{
-		ptrans_.position_.x -= 0.2f;
-	}*/
 
 	if (Input::IsKeyUp(DIK_RETURN))
 	{
