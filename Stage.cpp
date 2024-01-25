@@ -15,15 +15,15 @@ Stage::~Stage()
 void Stage::Initialize()
 {
     hstage[0] = Model::Load("Ground.fbx");
-    hstage[1] = Model::Load("Ground1.fbx");
+    hstage[1] = Model::Load("SkyBox.fbx");
 
-    strans2.position_ = { 10,0,-10 };
-    strans2.rotate_ = { 0,90,0 };
+    
 }
 
 //XV
 void Stage::Update()
 {
+    strans2.rotate_.y += 0.1f;
 }
 
 //•`‰æ
