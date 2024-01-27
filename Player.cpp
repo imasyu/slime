@@ -3,6 +3,7 @@
 #include "Engine/Input.h"
 #include "Engine/Camera.h"
 #include "Engine/SphereCollider.h"
+#include "Engine/SceneManager.h"
 
 //コンストラクタ
 Player::Player(GameObject* parent)
@@ -29,21 +30,12 @@ void Player::Update()
 
 	transform_ = ptrans_;
 
-	Camera::SetTarget(ptrans_.position_);
+	Camera::SetTarget({ ptrans_.position_.x, 0, ptrans_.position_.z });
 	XMFLOAT3 camPos = ptrans_.position_;
-	camPos.y += 0;
-	camPos.z -= 10;
-	camPos.x -= 0;
+	camPos.y = 4;
+	camPos.z = -20;
+	camPos.x = ptrans_.position_.x;
 	Camera::SetPosition(camPos);
-
-	if (Input::IsKey(DIK_RIGHT))
-	{
-		ptrans_.position_.x += 0.2f;
-	}
-	if (Input::IsKey(DIK_LEFT))
-	{
-		ptrans_.position_.x -= 0.2f;
-	}
 
 	if (Input::IsKeyUp(DIK_RETURN))
 	{
@@ -74,17 +66,31 @@ void Player::Release()
 void Player::Jump(float angle)
 {
 	gravity_ = 0.02f;         //重力
-	
+	const float MAX_JUMP = 0.55f;	//最大ジャンプ力
+	const float MAX_MOVEX = 0.05f;	//最大横移動
 
-	if (Input::IsKeyUp(DIK_SPACE))
+	if (Input::IsKey(DIK_SPACE) /*&& !isJumping_*/)//ここのコメントを外すと、ジャブ中にジャンプできるバグが治る
 	{
-		movex += 0.01;
+		movex += 0.001;	
+		velocity += 0.02f;
+
+		if (velocity >= MAX_JUMP)
+		{
+			velocity = MAX_JUMP;
+		}
+
+		if (movex >= MAX_MOVEX)
+		{
+			movex = MAX_MOVEX;
+		}
+		
 	}
 	
 	//前回までジャンプしていないとき
 	if (Input::IsKeyUp(DIK_SPACE) && !isJumping_)
 	{
-		velocity = 0.4f;
+		movex += 0.2f;
+		//velocity = 0.4f;
 		isJumping_ = true;  //ジャンプしている
 	}
 
@@ -106,7 +112,13 @@ void Player::Jump(float angle)
 		{
 			ptrans_.position_.y = 0;   //地面に合わせる
 			isJumping_ = false;
+			movex = 0;
+			velocity = 0;
 		}
+		else if (ptrans_.position_.y < 0) {
+			velocity += gravity_;
+		}
+			
 	}
 }
 

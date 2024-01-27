@@ -6,6 +6,7 @@
 #include "Image.h"
 #include "Audio.h"
 #include "../PlayScene.h"
+#include "../GameOverScene.h"
 
 
 //コンストラクタ
@@ -42,6 +43,7 @@ void SceneManager::Update()
 		{
 		case SCENE_ID_TEST: Instantiate<TestScene>(this); break;
 		case SCENE_ID_PLAYSCENE: Instantiate<PlayScene>(this); break;
+		case SCENE_ID_GAMEOVER: Instantiate<GameOverScene>(this); break;
 		}
 		Audio::Initialize();
 		currentSceneID_ = nextSceneID_;

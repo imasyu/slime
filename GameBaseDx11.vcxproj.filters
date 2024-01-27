@@ -103,6 +103,7 @@
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="GameOverScene.cpp" />
     <ClCompile Include="JumpRamp.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +181,7 @@
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="GameOverScene.h" />
     <ClInclude Include="JumpRamp.h" />
   </ItemGroup>
   <ItemGroup>
