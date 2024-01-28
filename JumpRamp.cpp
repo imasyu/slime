@@ -16,7 +16,7 @@ void JumpRamp::Initialize()
 	hModel_ = Model::Load("JumpRamp2.fbx");
 	assert(hModel_ >= 0);
 
-	Model::SetAnimFrame(hModel_, 0, 60, 1);
+	//Model::SetAnimFrame(hModel_, 0, 60, 1);
 }
 
 void JumpRamp::Update()
