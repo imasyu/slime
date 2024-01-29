@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Stage.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
 #include "Engine/Camera.h"
@@ -36,6 +37,9 @@ void Player::Update()
 	camPos.z = -20;
 	camPos.x = ptrans_.position_.x;
 	Camera::SetPosition(camPos);
+
+	//Stage* pStage = (Stage*)FindObject("Stage");   //ステージオブジェクトを探す
+	//int hGrou
 
 	if (Input::IsKeyUp(DIK_RETURN))
 	{

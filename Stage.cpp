@@ -26,7 +26,7 @@ void Stage::Initialize()
 void Stage::Update()
 {
     strans2.rotate_.y += 0.1f;
-    strans3.position_.x = 10;
+    strans3.position_.x = 20;
 }
 
 //•`‰æ
