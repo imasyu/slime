@@ -13,8 +13,11 @@ JumpRamp::~JumpRamp()
 void JumpRamp::Initialize()
 {
 	//モデルデータのロード
-	hModel_ = Model::Load("JumpRamp2.fbx");
+	hModel_ = Model::Load("spring.fbx");  
 	assert(hModel_ >= 0);
+
+	//transform_.position_ = { 3,0,0 };
+	//transform_.scale_ = { 100,100,100 };
 
 	Model::SetAnimFrame(hModel_, 1, 60, 1);
 }
