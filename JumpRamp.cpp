@@ -1,5 +1,6 @@
 #include "JumpRamp.h"
 #include "Engine/Model.h"
+#include "Engine/BoxCollider.h"
 
 JumpRamp::JumpRamp(GameObject* parent)
 	:GameObject(parent, "JumpRamp"), hModel_(-1)
@@ -16,10 +17,13 @@ void JumpRamp::Initialize()
 	hModel_ = Model::Load("spring.fbx");  
 	assert(hModel_ >= 0);
 
-	//transform_.position_ = { 3,0,0 };
-	//transform_.scale_ = { 100,100,100 };
+	transform_.position_ = { 5,0,0 };
+	transform_.scale_ = { 0.5f,0.5f,0.5f };
 
 	Model::SetAnimFrame(hModel_, 1, 60, 1);
+
+	BoxCollider* collision = new BoxCollider(transform_.position_, XMFLOAT3(3, 2, 1));
+	AddCollider(collision);
 }
 
 void JumpRamp::Update()

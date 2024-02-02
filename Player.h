@@ -42,5 +42,9 @@ public:
 	//ƒWƒƒƒ“ƒvˆ—
 	void Jump(float angle);
 
+	//‰½‚©‚É“–‚½‚Á‚½
+   //ˆø”FpTarget “–‚½‚Á‚½‘Šè
+	void OnCollision(GameObject* pTarget) override;
+
 };
 

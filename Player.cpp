@@ -17,7 +17,7 @@ void Player::Initialize()
 {
 	hModel_ = Model::Load("Slime.fbx");
 
-	ptrans_.position_.x = -4;
+	ptrans_.position_.x = -10;
 
 	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0, 0), (0.8f));
 	AddCollider(collision);
@@ -38,8 +38,6 @@ void Player::Update()
 	camPos.x = ptrans_.position_.x;
 	Camera::SetPosition(camPos);
 
-	//Stage* pStage = (Stage*)FindObject("Stage");   //ステージオブジェクトを探す
-	//int hGrou
 
 	if (Input::IsKeyUp(DIK_RETURN))
 	{
@@ -123,6 +121,15 @@ void Player::Jump(float angle)
 			velocity += gravity_;
 		}
 			
+	}
+}
+
+void Player::OnCollision(GameObject* pTarget)
+{
+	//ジャンプ台に当たった時
+	if (pTarget->GetObjectName() == "JumpRamp")
+	{
+		velocity += 0.2f;
 	}
 }
 
