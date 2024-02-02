@@ -129,6 +129,7 @@ void Player::OnCollision(GameObject* pTarget)
 	//ƒWƒƒƒ“ƒv‘ä‚É“–‚½‚Á‚½Žž
 	if (pTarget->GetObjectName() == "JumpRamp")
 	{
+		movex = 0;
 		velocity += 0.2f;
 	}
 }

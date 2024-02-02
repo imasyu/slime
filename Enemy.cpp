@@ -14,7 +14,7 @@ void Enemy::Initialize()
 {
 	henemy_ = Model::Load("Enemy.fbx");
 
-	//etrans_.position_.y = 3;
+	etrans_.position_.x = 3;
 
 	Model::SetAnimFrame(henemy_, 1, 60, 1);
 
