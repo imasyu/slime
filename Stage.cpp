@@ -18,7 +18,8 @@ void Stage::Initialize()
     assert(hstage[0] >= 0);
     hstage[1] = Model::Load("SkyBox.fbx");
     assert(hstage[1] >= 0);
-    hstage[2] = Model::Load("Stage1.fbx");
+    hstage[2] = Model::Load("Stage.fbx");
+    assert(hstage[2] >= 0);
     
 }
 
@@ -27,7 +28,9 @@ void Stage::Update()
 {
     strans2.rotate_.y += 0.1f;
     strans3.position_.x = 20;
-}
+   
+};
+   
 
 //•`‰æ
 void Stage::Draw()

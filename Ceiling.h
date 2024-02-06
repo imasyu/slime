@@ -1,21 +1,17 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-//Stageを管理するクラス
-class Stage : public GameObject
+//Ceilingを管理するクラス
+class Ceiling : public GameObject
 {
 private:
-    int hstage[3];
-
-    Transform strans;
-    Transform strans2;
-    Transform strans3;
+    int hModel_;
 public:
     //コンストラクタ
-    Stage(GameObject* parent);
+    Ceiling(GameObject* parent);
 
     //デストラクタ
-    ~Stage();
+    ~Ceiling();
 
     //初期化
     void Initialize() override;
@@ -28,4 +24,6 @@ public:
 
     //開放
     void Release() override;
+
+    int GetModeHandle() { return hModel_; }
 };

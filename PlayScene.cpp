@@ -17,7 +17,7 @@ void PlayScene::Initialize()
 	Instantiate<Player>(this);
 	Instantiate<Stage>(this);
 	Instantiate<Enemy>(this);
-	Instantiate<JumpRamp>(this);
+	//Instantiate<JumpRamp>(this);
 }
 
 void PlayScene::Update()

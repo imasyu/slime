@@ -1,5 +1,5 @@
 #include "Player.h"
-#include "Stage.h"
+#include "Ceiling.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
 #include "Engine/Camera.h"
@@ -17,7 +17,7 @@ void Player::Initialize()
 {
 	hModel_ = Model::Load("Slime.fbx");
 
-	ptrans_.position_.x = -10;
+	ptrans_.position_.x = -20;
 
 	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0, 0), (0.8f));
 	AddCollider(collision);
@@ -38,6 +38,24 @@ void Player::Update()
 	camPos.x = ptrans_.position_.x;
 	Camera::SetPosition(camPos);
 
+	Ceiling* pCeiling = (Ceiling*)FindObject("Ceiling");   //ステージオブジェクトを探す
+	int hGroundModel = pCeiling ->GetModeHandle();     //モデル番号を取得
+
+	RayCastData data;
+	data.start = transform_.position_;    //レイの発射位置
+	data.start.y = 0;
+	data.dir = XMFLOAT3(0, -1, 0);         //レイの方向
+	Model::RayCast(hGroundModel, &data);  //レイを発射
+
+	if (Input::IsKeyDown(DIK_P))
+	{
+		//レイが当たったら
+		if (data.hit)
+		{
+			//その分あげる
+			transform_.position_.y = data.dist;
+		}
+	}
 
 	if (Input::IsKeyUp(DIK_RETURN))
 	{
