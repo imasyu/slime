@@ -3,6 +3,7 @@
 #include "Stage.h"
 #include "Enemy.h"
 #include "JumpRamp.h"
+#include "Ceiling.h"
 
 PlayScene::PlayScene(GameObject* parent)
 {
@@ -18,6 +19,7 @@ void PlayScene::Initialize()
 	Instantiate<Stage>(this);
 	Instantiate<Enemy>(this);
 	//Instantiate<JumpRamp>(this);
+	Instantiate<Ceiling>(this);
 }
 
 void PlayScene::Update()

@@ -1,6 +1,8 @@
 #pragma once
 #include "Engine/GameObject.h"
 
+class Aim;
+
 class Player : public GameObject
 {
 private:
@@ -19,6 +21,7 @@ private:
 	bool isJumping_ = false;   //ジャンプしているかどうか
 	float jumpTime = 0.0f;     //ジャンプの経過時間
 	float angle = DirectX::XMConvertToRadians(45.0f);
+	Aim* pAim_;                     // 照準
 
 	Transform ptrans_;
 	

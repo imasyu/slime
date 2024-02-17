@@ -18,7 +18,7 @@ void Ceiling::Initialize()
 
 void Ceiling::Update()
 {
-	transform_.position_ = { 3,6,0 };
+	transform_.position_ = { 3,7,0 };
 }
 
 void Ceiling::Draw()
