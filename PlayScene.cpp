@@ -4,6 +4,12 @@
 #include "Enemy.h"
 #include "JumpRamp.h"
 #include "Ceiling.h"
+#include "Engine/Text.h"
+
+namespace {
+	Text* pText = nullptr;
+	int timeCount = 0;
+}
 
 PlayScene::PlayScene(GameObject* parent)
 {
@@ -20,14 +26,20 @@ void PlayScene::Initialize()
 	Instantiate<Enemy>(this);
 	//Instantiate<JumpRamp>(this);
 	Instantiate<Ceiling>(this);
+
+	pText = new Text();
+	pText->Initialize();
 }
 
 void PlayScene::Update()
 {
+	
 }
 
 void PlayScene::Draw()
 {
+	pText->Draw(30, 30, (timeCount / 60));
+	timeCount++;
 }
 
 void PlayScene::Release()

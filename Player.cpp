@@ -6,6 +6,12 @@
 #include "Engine/Camera.h"
 #include "Engine/SphereCollider.h"
 #include "Engine/SceneManager.h"
+#include "Engine/Text.h"
+
+namespace {
+	Text* pText = nullptr;
+
+}
 
 //コンストラクタ
 Player::Player(GameObject* parent)
@@ -26,6 +32,8 @@ void Player::Initialize()
 	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0, 0), (0.8f));
 	AddCollider(collision);
 
+	pText = new Text();
+	pText->Initialize();
 }
 
 //更新
@@ -44,7 +52,7 @@ void Player::Update()
 
 	
 
-	if (Input::IsKeyDown(DIK_P))
+	if (Input::IsKey(DIK_P))
 	{
 		Ceiling* pCeiling = (Ceiling*)FindObject("Ceiling");   //ステージオブジェクトを探す
 		int hGroundModel = pCeiling->GetModeHandle();     //モデル番号を取得
@@ -57,7 +65,7 @@ void Player::Update()
 		if (data.hit)
 		{
 			//その分あげる
-			transform_.position_.y = +data.dist;
+			transform_.position_.y += data.dist - 1;
 		}
 	}
 
@@ -78,7 +86,8 @@ void Player::Draw()
 	Model::SetTransform(hModel_, ptrans_);
 	Model::Draw(hModel_);
 
-	
+	pText->Draw(30, 100, transform_.position_.x);
+	pText->Draw(30, 140, transform_.position_.z);
 }
 
 //開放
