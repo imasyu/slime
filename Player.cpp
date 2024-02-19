@@ -30,7 +30,7 @@ void Player::Initialize()
 	pAim_ = Instantiate<Aim>(this);
 	pAim_->SetPlayer(this);
 
-	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0, 0), (5.0f));
+	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0, 0), (1.0f));
 	AddCollider(collision);
 
 	pText = new Text();
@@ -51,19 +51,6 @@ void Player::Update()
 	camPos.x = ptrans_.position_.x;
 	Camera::SetPosition(camPos);
 
-	//Stage* pStage = (Stage*)FindObject("Stage");
-	//int hGroundModel = pStage->GetModeHandle();
-
-	//RayCastData data;
-	//data.start = ptrans_.position_;    //レイの発射位置
-	//data.start.y = 0;
-	//data.dir = XMFLOAT3(0, -1, 0);         //レイの方向
-	//Model::RayCast(hGroundModel, &data);  //レイを発射
-	////レイが当たったら
-	//if (data.hit)
-	//{
-	//	ptrans_.position_.y = -data.dist;
-	//}
 
 	if (Input::IsKeyDown(DIK_P))
 	{
