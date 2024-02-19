@@ -28,8 +28,8 @@ void Player::Initialize()
 
 	ptrans_.position_.x = -20;
 
-	pAim_ = Instantiate<Aim>(this);
-	pAim_->SetPlayer(this);
+	//pAim_ = Instantiate<Aim>(this);
+	//pAim_->SetPlayer(this);
 
 	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0, 0), (1.0f));
 	AddCollider(collision);
@@ -45,7 +45,7 @@ void Player::Update()
 
 	transform_ = ptrans_;
 
-	Camera::SetTarget({ ptrans_.position_.x, 0, ptrans_.position_.z });
+	Camera::SetTarget({ ptrans_.position_.x, ptrans_.position_.y, ptrans_.position_.z });
 	XMFLOAT3 camPos = ptrans_.position_;
 	camPos.y = 4;
 	camPos.z = -20;
@@ -167,7 +167,4 @@ void Player::OnCollision(GameObject* pTarget)
 	}
 }
 
-void Player::Pendulam()
-{
-}
 
