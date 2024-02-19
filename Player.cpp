@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Ceiling.h"
+#include "Stage.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
 #include "Aim.h"
@@ -26,10 +27,10 @@ void Player::Initialize()
 
 	ptrans_.position_.x = -20;
 
-	//pAim_ = Instantiate<Aim>(this);
-	//pAim_->SetPlayer(this);
+	pAim_ = Instantiate<Aim>(this);
+	pAim_->SetPlayer(this);
 
-	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0, 0), (0.8f));
+	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0, 0), (5.0f));
 	AddCollider(collision);
 
 	pText = new Text();
@@ -50,22 +51,34 @@ void Player::Update()
 	camPos.x = ptrans_.position_.x;
 	Camera::SetPosition(camPos);
 
-	
+	//Stage* pStage = (Stage*)FindObject("Stage");
+	//int hGroundModel = pStage->GetModeHandle();
 
-	if (Input::IsKey(DIK_P))
+	//RayCastData data;
+	//data.start = ptrans_.position_;    //レイの発射位置
+	//data.start.y = 0;
+	//data.dir = XMFLOAT3(0, -1, 0);         //レイの方向
+	//Model::RayCast(hGroundModel, &data);  //レイを発射
+	////レイが当たったら
+	//if (data.hit)
+	//{
+	//	ptrans_.position_.y = -data.dist;
+	//}
+
+	if (Input::IsKeyDown(DIK_P))
 	{
 		Ceiling* pCeiling = (Ceiling*)FindObject("Ceiling");   //ステージオブジェクトを探す
 		int hGroundModel = pCeiling->GetModeHandle();     //モデル番号を取得
 
 		RayCastData data;
-		data.start = transform_.position_;    //レイの発射位置
+		data.start = ptrans_.position_;    //レイの発射位置
 		data.dir = XMFLOAT3(0, 1, 0);         //レイの方向
 		Model::RayCast(hGroundModel, &data);  //レイを発射
 		//レイが当たったら
 		if (data.hit)
 		{
 			//その分あげる
-			transform_.position_.y += data.dist - 1;
+			ptrans_.position_.y += data.dist - 1;
 		}
 	}
 

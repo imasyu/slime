@@ -1,20 +1,14 @@
 #pragma once
 #include "Engine/GameObject.h"
-
-//Stageを管理するクラス
-class Stage : public GameObject
+class SkyBox : public GameObject
 {
-private:
-    int hstage[2];
-
-    Transform strans;
-    Transform strans2;
+    int hModel_;      //モデル番号
 public:
     //コンストラクタ
-    Stage(GameObject* parent);
+    SkyBox(GameObject* parent);
 
     //デストラクタ
-    ~Stage();
+    ~SkyBox();
 
     //初期化
     void Initialize() override;
@@ -27,6 +21,5 @@ public:
 
     //開放
     void Release() override;
-
-    int GetModeHandle() { return hstage[3]; }
 };
+

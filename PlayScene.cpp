@@ -4,6 +4,7 @@
 #include "Enemy.h"
 #include "JumpRamp.h"
 #include "Ceiling.h"
+#include "SkyBox.h"
 #include "Engine/Text.h"
 
 namespace {
@@ -26,6 +27,7 @@ void PlayScene::Initialize()
 	Instantiate<Enemy>(this);
 	//Instantiate<JumpRamp>(this);
 	Instantiate<Ceiling>(this);
+	//Instantiate<SkyBox>(this);
 
 	pText = new Text();
 	pText->Initialize();

@@ -2,7 +2,7 @@
 #include "Engine/Model.h"
 //コンストラクタ
 Stage::Stage(GameObject* parent)
-    :GameObject(parent, "Stage"), hstage{-1, -1, -1}
+    :GameObject(parent, "Stage"), hstage{-1, -1}
 {
 }
 
@@ -16,18 +16,18 @@ void Stage::Initialize()
 {
     hstage[0] = Model::Load("Stage.fbx");
     assert(hstage[0] >= 0);
-    hstage[1] = Model::Load("SkyBox.fbx");
+
+    hstage[1] = Model::Load("Stage.fbx");
     assert(hstage[1] >= 0);
-    hstage[2] = Model::Load("Stage.fbx");
-    assert(hstage[2] >= 0);
     
 }
 
 //更新
 void Stage::Update()
 {
-    strans2.rotate_.y += 0.1f;
-    strans3.position_.x = 20;
+    //strans.position_.y = -5;
+    strans2.position_.x = 20;
+    //strans2.position_.y = -5;
    
 };
    
@@ -40,9 +40,6 @@ void Stage::Draw()
 
     Model::SetTransform(hstage[1], strans2);
     Model::Draw(hstage[1]);
-
-    Model::SetTransform(hstage[2], strans3);
-    Model::Draw(hstage[2]);
 }
 
 //開放
