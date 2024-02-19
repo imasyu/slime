@@ -2,7 +2,7 @@
 #include "Engine/Model.h"
 
 SkyBox::SkyBox(GameObject* parent) 
-	:GameObject(parent, "Player"), hModel_(-1)
+	:GameObject(parent, "SkyBox"), hModel_(-1)
 {
 }
 

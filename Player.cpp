@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Ceiling.h"
 #include "Stage.h"
+#include "Rod.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
 #include "Aim.h"
@@ -64,8 +65,9 @@ void Player::Update()
 		//ƒŒƒC‚ª“–‚½‚Á‚½‚ç
 		if (data.hit)
 		{
+			Instantiate<Rod>(this);
 			//‚»‚Ì•ª‚ ‚°‚é
-			ptrans_.position_.y += data.dist - 1;
+			ptrans_.position_.y += data.dist - 5;
 		}
 	}
 
