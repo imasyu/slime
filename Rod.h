@@ -21,5 +21,8 @@ public:
 
     //ŠJ•ú
     void Release() override;
+
+    //U‚èq
+    void Pendulam();
 };
 

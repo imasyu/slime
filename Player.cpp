@@ -167,3 +167,7 @@ void Player::OnCollision(GameObject* pTarget)
 	}
 }
 
+void Player::Pendulam()
+{
+}
+
