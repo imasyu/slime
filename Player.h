@@ -1,5 +1,6 @@
 #pragma once
 #include "Engine/GameObject.h"
+#include "Rigibody.h"
 
 class Aim;
 
@@ -21,7 +22,11 @@ private:
 	bool isJumping_ = false;   //ジャンプしているかどうか
 	float jumpTime = 0.0f;     //ジャンプの経過時間
 	float angle = DirectX::XMConvertToRadians(45.0f);
+	float rotateTime = 0.0f;   //回転の経過時間
+	float rotateInterval = 2.0f; //回転を行う間隔(秒)
+	bool rotateflag = false;     //現在回転しているかのフラグ
 	Aim* pAim_;                     // 照準
+	Rigibody rb;
 
 	Transform ptrans_;
 	
@@ -49,5 +54,6 @@ public:
    //引数：pTarget 当たった相手
 	void OnCollision(GameObject* pTarget) override;
 
+	void Force();
 };
 

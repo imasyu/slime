@@ -109,6 +109,7 @@
     <ClCompile Include="Aim.cpp" />
     <ClCompile Include="SkyBox.cpp" />
     <ClCompile Include="Rod.cpp" />
+    <ClCompile Include="Rigibody.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -191,6 +192,7 @@
     <ClInclude Include="Aim.h" />
     <ClInclude Include="SkyBox.h" />
     <ClInclude Include="Rod.h" />
+    <ClInclude Include="Rigibody.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">
