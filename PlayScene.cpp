@@ -5,6 +5,8 @@
 #include "JumpRamp.h"
 #include "Ceiling.h"
 #include "SkyBox.h"
+#include "Rod.h"
+#include "AirObject.h"
 #include "Engine/Text.h"
 
 namespace {
@@ -28,6 +30,8 @@ void PlayScene::Initialize()
 	//Instantiate<JumpRamp>(this);
 	Instantiate<Ceiling>(this);
 	//Instantiate<SkyBox>(this);
+	Instantiate<Rod>(this);
+	Instantiate<AirObject>(this);
 
 	pText = new Text();
 	pText->Initialize();

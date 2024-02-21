@@ -28,8 +28,8 @@ void Player::Initialize()
 
 	ptrans_.position_.x = -20;
 
-	//pAim_ = Instantiate<Aim>(this);
-	//pAim_->SetPlayer(this);
+	pAim_ = Instantiate<Aim>(this);
+	pAim_->SetPlayer(this);
 
 	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0, 0), (1.0f));
 	AddCollider(collision);
@@ -66,7 +66,7 @@ void Player::Update()
 		//ƒŒƒC‚ª“–‚½‚Á‚½‚ç
 		if (data.hit)
 		{
-			Instantiate<Rod>(this);
+			//Instantiate<Rod>(this);
 			//‚»‚Ì•ª‚ ‚°‚é
 			ptrans_.position_.y += data.dist - 5;
 		}

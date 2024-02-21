@@ -1,16 +1,15 @@
 #pragma once
 #include "Engine/GameObject.h"
-#include <chrono>
 
-class Rod : public GameObject
+class AirObject : public GameObject
 {
-	int hModel_;
+    int hModel_;
 public:
     //コンストラクタ
-    Rod(GameObject* parent);
+    AirObject(GameObject* parent);
 
     //デストラクタ
-    ~Rod();
+    ~AirObject();
 
     //初期化
     void Initialize() override;
@@ -23,8 +22,4 @@ public:
 
     //開放
     void Release() override;
-
-    //振り子
-    void Pendulum();
 };
-
