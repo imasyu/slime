@@ -17,12 +17,14 @@ void Rod::Initialize()
 {
 	//モデルデータのロード
 	hModel_ = Model::Load("Rod.fbx");
+
+	transform_.rotate_ = { 0, 0, 180.0f };
+	transform_.position_ = { 0, 2, 0 };
 }
 
 void Rod::Update()
 {
-	transform_.position_.y = -1;
-	transform_.rotate_.y = 90.0f;
+	
 	
 
 	Pendulum();
