@@ -30,7 +30,6 @@ void PlayScene::Initialize()
 	//Instantiate<JumpRamp>(this);
 	Instantiate<Ceiling>(this);
 	//Instantiate<SkyBox>(this);
-	Instantiate<Rod>(this);
 	Instantiate<AirObject>(this);
 
 	pText = new Text();

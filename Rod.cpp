@@ -22,7 +22,7 @@ void Rod::Initialize()
 void Rod::Update()
 {
 	transform_.position_.y = -1;
-
+	transform_.rotate_.y = 90.0f;
 	
 
 	Pendulum();
