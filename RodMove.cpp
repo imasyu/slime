@@ -8,7 +8,7 @@ RodMove::RodMove()
 
 void RodMove::Start()
 {
-	hj = parent->
+
 }
 
 void RodMove::Update()
