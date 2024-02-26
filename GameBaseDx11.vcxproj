@@ -165,7 +165,6 @@
     <ClInclude Include="Aim.h" />
     <ClInclude Include="AirObject.h" />
     <ClInclude Include="Ceiling.h" />
-    <ClInclude Include="Component.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Engine\Audio.h" />
     <ClInclude Include="Engine\BillBoard.h" />

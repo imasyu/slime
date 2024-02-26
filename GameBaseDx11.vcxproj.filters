@@ -193,7 +193,6 @@
     <ClInclude Include="SkyBox.h" />
     <ClInclude Include="Rod.h" />
     <ClInclude Include="AirObject.h" />
-    <ClInclude Include="Component.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

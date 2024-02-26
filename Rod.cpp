@@ -32,8 +32,8 @@ void Rod::Update()
 
 void Rod::Draw()
 {
-	Model::SetTransform(hModel_, transform_);
-	Model::Draw(hModel_);
+	/*Model::SetTransform(hModel_, transform_);
+	Model::Draw(hModel_);*/
 }
 
 void Rod::Release()

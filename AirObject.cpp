@@ -1,6 +1,7 @@
 #include "AirObject.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
+#include "Engine/Camera.h"
 #include "Rod.h"
 
 AirObject::AirObject(GameObject* parent)
@@ -24,22 +25,19 @@ void AirObject::Initialize()
 
 void AirObject::Update()
 {
-	if (Input::IsMouseButton(0)) {
+	XMFLOAT3 mousePosition = Input::GetMousePosition();
 
-		if (transform_.position_.z <= 0) {
-			transform_.rotate_.z += 5.0f;
-		}
-	}
-	if (Input::IsMouseButtonUp(0)) {
+	XMVECTOR screenPosition = XMVectorSet(mousePosition.x, mousePosition.y, 0.0f, 0.0f);
 
-		if (transform_.position_.z >= 180) {
-			transform_.rotate_.z -= 5.0f;
-		}
-	}
+	XMVECTOR unprojectedPoint = XMVector3Unproject(
+		XMVectorSet(mousePosition.x)
+	)
 }
 
 void AirObject::Draw()
 {
+	Model::SetTransform(hModel_, transform_);
+	Model::Draw(hModel_);
 }
 
 void AirObject::Release()
