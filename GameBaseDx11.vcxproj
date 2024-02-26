@@ -156,9 +156,7 @@
     <ClCompile Include="GameOverScene.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayScene.cpp" />
-    <ClCompile Include="Rigibody.cpp" />
     <ClCompile Include="Rod.cpp" />
-    <ClCompile Include="RodMove.cpp" />
     <ClCompile Include="SkyBox.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="TestScene.cpp" />
@@ -192,14 +190,11 @@
     <ClInclude Include="Engine\Text.h" />
     <ClInclude Include="Engine\Texture.h" />
     <ClInclude Include="Engine\Transform.h" />
-    <ClInclude Include="HingeJoint.h" />
     <ClInclude Include="JumpRamp.h" />
     <ClInclude Include="GameOverScene.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayScene.h" />
-    <ClInclude Include="Rigibody.h" />
     <ClInclude Include="Rod.h" />
-    <ClInclude Include="RodMove.h" />
     <ClInclude Include="SkyBox.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="TestScene.h" />

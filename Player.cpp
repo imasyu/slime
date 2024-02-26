@@ -43,7 +43,6 @@ void Player::Initialize()
 void Player::Update()
 {
 	Jump(angle);
-	Force();
 
 	transform_ = ptrans_;
 
@@ -168,17 +167,3 @@ void Player::OnCollision(GameObject* pTarget)
 		velocity += 0.2f;
 	}
 }
-
-void Player::Force()
-{
-	if (Input::IsKey(DIK_RIGHT))
-		rb.AddForce(XMFLOAT3(0.01f, 0.0f, 0.0f));
-	if (Input::IsKey(DIK_LEFT))
-		rb.AddForce(XMFLOAT3(-0.01f, 0.0f, 0.0f));
-	if (Input::IsKey(DIK_UP))
-		rb.AddForce(XMFLOAT3(0.0f, 0.0f, 0.01f));
-	if (Input::IsKey(DIK_DOWN))
-		rb.AddForce(XMFLOAT3(0.0f, 0.0f, -0.01f));
-}
-
-

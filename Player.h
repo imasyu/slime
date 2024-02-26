@@ -1,6 +1,5 @@
 #pragma once
 #include "Engine/GameObject.h"
-#include "Rigibody.h"
 
 class Aim;
 
@@ -26,7 +25,6 @@ private:
 	float rotateInterval = 2.0f; //‰ñ“]‚ğs‚¤ŠÔŠu(•b)
 	bool rotateflag = false;     //Œ»İ‰ñ“]‚µ‚Ä‚¢‚é‚©‚Ìƒtƒ‰ƒO
 	Aim* pAim_;                     // Æ€
-	Rigibody rb;
 
 	Transform ptrans_;
 	
@@ -54,6 +52,5 @@ public:
    //ˆø”FpTarget “–‚½‚Á‚½‘Šè
 	void OnCollision(GameObject* pTarget) override;
 
-	void Force();
 };
 

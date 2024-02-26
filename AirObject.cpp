@@ -24,7 +24,18 @@ void AirObject::Initialize()
 
 void AirObject::Update()
 {
-	
+	if (Input::IsMouseButton(0)) {
+
+		if (transform_.position_.z <= 0) {
+			transform_.rotate_.z += 5.0f;
+		}
+	}
+	if (Input::IsMouseButtonUp(0)) {
+
+		if (transform_.position_.z >= 180) {
+			transform_.rotate_.z -= 5.0f;
+		}
+	}
 }
 
 void AirObject::Draw()
