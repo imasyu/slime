@@ -24,16 +24,12 @@ void Rod::Initialize()
 
 void Rod::Update()
 {
-	
-	
-
-	Pendulum();
 }
 
 void Rod::Draw()
 {
-	/*Model::SetTransform(hModel_, transform_);
-	Model::Draw(hModel_);*/
+	Model::SetTransform(hModel_, transform_);
+	Model::Draw(hModel_);
 }
 
 void Rod::Release()

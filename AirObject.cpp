@@ -1,8 +1,12 @@
+#define _USE_MATH_DEFINES
+
+
+
 #include "AirObject.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
-#include "Engine/Camera.h"
 #include "Rod.h"
+#include <math.h>
 
 AirObject::AirObject(GameObject* parent)
 	:GameObject(parent, "AirObject"), hModel_(-1)
@@ -18,26 +22,28 @@ void AirObject::Initialize()
 	//モデルデータのロード
 	hModel_ = Model::Load("AirRod.fbx");
 
-	transform_.position_ = { 0,10,0 };
+	transform_.position_ = { 0,5,0 };
 
 	Instantiate<Rod>(this);
 }
 
 void AirObject::Update()
 {
-	XMFLOAT3 mousePosition = Input::GetMousePosition();
+	static float time = 0.0f;
+	time += 0.1f;
 
-	XMVECTOR screenPosition = XMVectorSet(mousePosition.x, mousePosition.y, 0.0f, 0.0f);
+	if (Input::IsMouseButton(0)) {
+		float amplitude = 45.0f;
+		float frequency = 0.5f;
 
-	XMVECTOR unprojectedPoint = XMVector3Unproject(
-		XMVectorSet(mousePosition.x)
-	)
+		transform_.rotate_.z = amplitude * sin(M_PI * 2 * frequency * time);
+	}
+	
 }
 
 void AirObject::Draw()
 {
-	Model::SetTransform(hModel_, transform_);
-	Model::Draw(hModel_);
+	
 }
 
 void AirObject::Release()

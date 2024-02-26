@@ -66,7 +66,7 @@ void Player::Update()
 		//ƒŒƒC‚ª“–‚½‚Á‚½‚ç
 		if (data.hit)
 		{
-			//Instantiate<AirObject>(this);
+			Instantiate<AirObject>(this);
 			//‚»‚Ì•ª‚ ‚°‚é
 			ptrans_.position_.y += data.dist - 5;
 		}
