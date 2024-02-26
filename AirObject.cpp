@@ -7,9 +7,10 @@
 #include "Engine/Input.h"
 #include "Rod.h"
 #include <math.h>
+#include "Player.h"
 
 AirObject::AirObject(GameObject* parent)
-	:GameObject(parent, "AirObject"), hModel_(-1)
+	:GameObject(parent, "AirObject"), hModel_(-1), amplitude(45.0f), frequency(0.15f)
 {
 }
 
@@ -33,9 +34,6 @@ void AirObject::Update()
 	time += 0.1f;
 
 	if (Input::IsMouseButton(0)) {
-		float amplitude = 45.0f;
-		float frequency = 0.5f;
-
 		transform_.rotate_.z = amplitude * sin(M_PI * 2 * frequency * time);
 	}
 	

@@ -4,6 +4,9 @@
 class AirObject : public GameObject
 {
     int hModel_;
+
+    float amplitude;
+    float frequency;
 public:
     //コンストラクタ
     AirObject(GameObject* parent);
