@@ -53,16 +53,16 @@ void Player::Update()
 	camPos.x = ptrans_.position_.x;
 	Camera::SetPosition(camPos);
 
+	Ceiling* pCeiling = (Ceiling*)FindObject("Ceiling");   //ステージオブジェクトを探す
+	int hGroundModel = pCeiling->GetModeHandle();     //モデル番号を取得
+
+	RayCastData data;
+	data.start = ptrans_.position_;    //レイの発射位置
+	data.dir = XMFLOAT3(0, 1, 0);         //レイの方向
+	Model::RayCast(hGroundModel, &data);  //レイを発射
 
 	if (Input::IsKeyDown(DIK_P))
 	{
-		Ceiling* pCeiling = (Ceiling*)FindObject("Ceiling");   //ステージオブジェクトを探す
-		int hGroundModel = pCeiling->GetModeHandle();     //モデル番号を取得
-
-		RayCastData data;
-		data.start = ptrans_.position_;    //レイの発射位置
-		data.dir = XMFLOAT3(0, 1, 0);         //レイの方向
-		Model::RayCast(hGroundModel, &data);  //レイを発射
 		//レイが当たったら
 		if (data.hit)
 		{
