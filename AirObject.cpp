@@ -30,13 +30,7 @@ void AirObject::Initialize()
 
 void AirObject::Update()
 {
-	static float time = 0.0f;
-	time += 0.1f;
-
-	if (Input::IsMouseButton(0)) {
-		transform_.rotate_.z = amplitude * sin(M_PI * 2 * frequency * time);
-	}
-	
+	Pendulum();
 }
 
 void AirObject::Draw()
@@ -46,4 +40,14 @@ void AirObject::Draw()
 
 void AirObject::Release()
 {
+}
+
+void AirObject::Pendulum()
+{
+	static float time = 0.0f;
+	time += 0.1f;
+
+	if (Input::IsMouseButton(0)) {
+		transform_.rotate_.z = amplitude * sin(M_PI * 2 * frequency * time);
+	}
 }

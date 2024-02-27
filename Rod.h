@@ -1,6 +1,5 @@
 #pragma once
 #include "Engine/GameObject.h"
-#include <chrono>
 
 class Rod : public GameObject
 {
@@ -23,8 +22,5 @@ public:
 
     //ŠJ•ú
     void Release() override;
-
-    //U‚èq
-    void Pendulum();
 };
 

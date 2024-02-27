@@ -1,8 +1,6 @@
 #include "Rod.h"
 #include "Engine/Model.h"
-#include <cmath>
-
-#define PI 3.141592
+#include "Player.h"
 
 Rod::Rod(GameObject* parent)
 	:GameObject(parent,"Rod"), hModel_(-1)
@@ -34,9 +32,4 @@ void Rod::Draw()
 
 void Rod::Release()
 {
-}
-
-void Rod::Pendulum()
-{
-	
 }

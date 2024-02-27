@@ -21,9 +21,6 @@ private:
 	bool isJumping_ = false;   //ジャンプしているかどうか
 	float jumpTime = 0.0f;     //ジャンプの経過時間
 	float angle = DirectX::XMConvertToRadians(45.0f);
-	float rotateTime = 0.0f;   //回転の経過時間
-	float rotateInterval = 2.0f; //回転を行う間隔(秒)
-	bool rotateflag = false;     //現在回転しているかのフラグ
 	Aim* pAim_;                     // 照準
 
 	Transform ptrans_;
