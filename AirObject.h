@@ -5,8 +5,8 @@ class AirObject : public GameObject
 {
     int hModel_;
 
-    float amplitude;
-    float frequency;
+    float amplitude; //振り幅
+    float frequency; //振り子の振動数
 public:
     //コンストラクタ
     AirObject(GameObject* parent);

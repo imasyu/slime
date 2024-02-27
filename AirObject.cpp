@@ -1,7 +1,5 @@
 #define _USE_MATH_DEFINES
 
-
-
 #include "AirObject.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
@@ -44,10 +42,13 @@ void AirObject::Release()
 
 void AirObject::Pendulum()
 {
+	//Œ»İ‚ÌŠÔ‚ğæ“¾
 	static float time = 0.0f;
+	//ŠÔ‚ği‚ß‚é
 	time += 0.1f;
 
 	if (Input::IsMouseButton(0)) {
-		transform_.rotate_.z = amplitude * sin(M_PI * 2 * frequency * time);
+		//‰ñ“]Šp“x‚ğŒvZ
+		transform_.rotate_.z = amplitude * sin(M_PI * 1 * frequency * time);
 	}
 }
