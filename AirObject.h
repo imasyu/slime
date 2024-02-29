@@ -7,6 +7,7 @@ class AirObject : public GameObject
 
     float amplitude; //振り幅
     float frequency; //振り子の振動数
+    float mpi;
 public:
     //コンストラクタ
     AirObject(GameObject* parent);

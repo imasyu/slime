@@ -1,14 +1,11 @@
-#define _USE_MATH_DEFINES
-
 #include "AirObject.h"
 #include "Engine/Model.h"
 #include "Engine/Input.h"
 #include "Rod.h"
-#include <math.h>
 #include "Player.h"
 
 AirObject::AirObject(GameObject* parent)
-	:GameObject(parent, "AirObject"), hModel_(-1), amplitude(45.0f), frequency(0.15f)
+	:GameObject(parent, "AirObject"), hModel_(-1), amplitude(45.0f), frequency(0.15f), mpi(3.14159265358979323846)
 {
 }
 
@@ -49,6 +46,6 @@ void AirObject::Pendulum()
 
 	if (Input::IsMouseButton(0)) {
 		//‰ñ“]Šp“x‚ðŒvŽZ
-		transform_.rotate_.z = amplitude * sin(M_PI * 1 * frequency * time);
+		transform_.rotate_.z = amplitude * sin(mpi * 1 * frequency * time);
 	}
 }

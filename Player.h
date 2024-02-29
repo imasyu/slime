@@ -1,5 +1,6 @@
 #pragma once
 #include "Engine/GameObject.h"
+#include "AirObject.h"
 
 class Aim;
 
@@ -21,7 +22,9 @@ private:
 	bool isJumping_ = false;   //ジャンプしているかどうか
 	float jumpTime = 0.0f;     //ジャンプの経過時間
 	float angle = DirectX::XMConvertToRadians(45.0f);
+
 	Aim* pAim_;                     // 照準
+	AirObject* pAirObject;
 
 	Transform ptrans_;
 	
@@ -49,5 +52,6 @@ public:
    //引数：pTarget 当たった相手
 	void OnCollision(GameObject* pTarget) override;
 
+	void SetAirObject(AirObject* airobject) { pAirObject = airobject; }
 };
 

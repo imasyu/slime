@@ -9,7 +9,6 @@
 #include "Engine/SphereCollider.h"
 #include "Engine/SceneManager.h"
 #include "Engine/Text.h"
-#include "AirObject.h"
 
 namespace {
 	Text* pText = nullptr;
@@ -18,7 +17,7 @@ namespace {
 
 //コンストラクタ
 Player::Player(GameObject* parent)
-	: GameObject(parent, "Player"), hModel_(-1), jumpCool_(0), jumpVelocity_(1.0)
+	: GameObject(parent, "Player"), hModel_(-1), jumpCool_(0), jumpVelocity_(1.0), pAirObject(nullptr)
 {
 }
 
@@ -61,15 +60,20 @@ void Player::Update()
 	data.dir = XMFLOAT3(0, 1, 0);         //レイの方向
 	Model::RayCast(hGroundModel, &data);  //レイを発射
 
+	if (pAirObject != nullptr) {
+		ptrans_.rotate_ = pAirObject->GetRotate();
+	}
+
 	if (Input::IsKeyDown(DIK_P))
 	{
+		AirObject* airobject = Instantiate<AirObject>(this);
+		SetAirObject(airobject);
+
 		//レイが当たったら
 		if (data.hit)
 		{
 			//その分あげる
 			ptrans_.position_.y += data.dist - 5;
-
-			Instantiate<AirObject>(this);
 		}
 	}
 
