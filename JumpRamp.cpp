@@ -14,16 +14,18 @@ JumpRamp::~JumpRamp()
 void JumpRamp::Initialize()
 {
 	//モデルデータのロード
-	hModel_ = Model::Load("spring.fbx");  
+	hModel_ = Model::Load("Jumpramp2.fbx");  
 	assert(hModel_ >= 0);
-
-	//transform_.position_ = { 5,0,0 };
-	transform_.scale_ = { 0.5f,0.5f,0.5f };
-
-	Model::SetAnimFrame(hModel_, 1, 60, 1);
 
 	BoxCollider* collision = new BoxCollider(transform_.position_, XMFLOAT3(1, 1, 1));
 	AddCollider(collision);
+
+	transform_.position_ = { 18,0,0 };
+	transform_.scale_ = { 0.5f,0.5f,0.5f };
+
+	//Model::SetAnimFrame(hModel_, 1, 60, 1);
+
+	
 }
 
 void JumpRamp::Update()

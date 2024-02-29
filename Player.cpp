@@ -68,6 +68,7 @@ void Player::Update()
 	{
 		AirObject* airobject = Instantiate<AirObject>(this);
 		SetAirObject(airobject);
+		airobject->Pendulum();
 
 		//ƒŒƒC‚ª“–‚½‚Á‚½‚ç
 		if (data.hit)
@@ -75,6 +76,12 @@ void Player::Update()
 			//‚»‚Ì•ª‚ ‚°‚é
 			ptrans_.position_.y += data.dist - 5;
 		}
+	}
+	else if (Input::IsMouseButtonUp(0) )
+	{
+		movex = 0.5;
+		velocity += 0.2f;
+		isJumping_ = true;
 	}
 
 	if (Input::IsKeyUp(DIK_RETURN))
@@ -168,7 +175,7 @@ void Player::OnCollision(GameObject* pTarget)
 	//ƒWƒƒƒ“ƒv‘ä‚É“–‚½‚Á‚½Žž
 	if (pTarget->GetObjectName() == "JumpRamp")
 	{
-		movex = 0;
-		velocity += 0.2f;
+		movex = 0.3f;
+		velocity += 0.1f;
 	}
 }
