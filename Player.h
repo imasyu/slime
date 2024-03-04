@@ -1,8 +1,10 @@
 #pragma once
 #include "Engine/GameObject.h"
 #include "AirObject.h"
+#include "PlayScene.h"
 
 class Aim;
+class PlayScene;
 
 class Player : public GameObject
 {
@@ -25,6 +27,7 @@ private:
 
 	Aim* pAim_;                     // Æ€
 	AirObject* pAirObject;
+	PlayScene* pPlayScene;
 
 	Transform ptrans_;
 	
@@ -48,9 +51,13 @@ public:
 	//ƒWƒƒƒ“ƒvˆ—
 	void Jump(float angle);
 
+	void TarzanJump(float angle);
+
 	//‰½‚©‚É“–‚½‚Á‚½
    //ˆø”FpTarget “–‚½‚Á‚½‘Šè
 	void OnCollision(GameObject* pTarget) override;
+
+	void SizeChange();
 
 	void SetAirObject(AirObject* airobject) { pAirObject = airobject; }
 };

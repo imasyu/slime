@@ -76,13 +76,10 @@ void Player::Update()
 			//その分あげる
 			ptrans_.position_.y += data.dist - 5;
 		}
+
+		TarzanJump(angle);
 	}
-	else if (Input::IsMouseButtonUp(0) )
-	{
-		movex = 0.5;
-		velocity += 0.2f;
-		isJumping_ = true;
-	}
+	
 
 	if (Input::IsKeyUp(DIK_RETURN))
 	{
@@ -142,6 +139,7 @@ void Player::Jump(float angle)
 		isJumping_ = true;  //ジャンプしている
 	}
 
+	
 	if (isJumping_)
 	{
 		//毎フレーム加速度-重力加速度
@@ -170,6 +168,25 @@ void Player::Jump(float angle)
 	}
 }
 
+void Player::TarzanJump(float angle)
+{
+	
+
+	if (Input::IsMouseButtonDown(0))
+	{
+		gravity_ += 0.03f;
+		movex += 0.2f;
+		velocity += 0.3f;
+	}
+	else if (Input::IsMouseButtonUp(0))
+	{
+		ptrans_.position_.x += movex;
+		KillAllChildren();
+		isJumping_ = true;
+	}
+
+}
+
 void Player::OnCollision(GameObject* pTarget)
 {
 	//ジャンプ台に当たった時
@@ -178,4 +195,9 @@ void Player::OnCollision(GameObject* pTarget)
 		movex = 0.3f;
 		velocity += 0.1f;
 	}
+}
+
+void Player::SizeChange()
+{
+	
 }
