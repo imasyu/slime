@@ -25,6 +25,9 @@ private:
 	float jumpTime = 0.0f;     //ジャンプの経過時間
 	float angle = DirectX::XMConvertToRadians(45.0f);
 
+	bool chargejump_ = false; 
+	float chargejumpPower;   //ジャンプ力を蓄える
+
 	Aim* pAim_;                     // 照準
 	AirObject* pAirObject;
 	PlayScene* pPlayScene;

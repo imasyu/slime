@@ -17,8 +17,7 @@ namespace {
 
 //コンストラクタ
 Player::Player(GameObject* parent)
-	: GameObject(parent, "Player"), hModel_(-1), jumpCool_(0), jumpVelocity_(1.0), pAirObject(nullptr)
-{
+	: GameObject(parent, "Player"), hModel_(-1), jumpCool_(0), jumpVelocity_(1.0), pAirObject(nullptr) {
 }
 
 //初期化
@@ -75,11 +74,12 @@ void Player::Update()
 		{
 			//その分あげる
 			ptrans_.position_.y += data.dist - 5;
-		}
 
-		TarzanJump(angle);
+			
+		}
 	}
-	
+
+	TarzanJump(angle);
 
 	if (Input::IsKeyUp(DIK_RETURN))
 	{
@@ -114,7 +114,7 @@ void Player::Jump(float angle)
 	const float MAX_JUMP = 0.55f;	//最大ジャンプ力
 	const float MAX_MOVEX = 0.05f;	//最大横移動
 
-	if (Input::IsKey(DIK_SPACE) /*&& !isJumping_*/)//ここのコメントを外すと、ジャブ中にジャンプできるバグが治る
+	if (Input::IsKey(DIK_SPACE) && !isJumping_)//ここのコメントを外すと、ジャブ中にジャンプできるバグが治る
 	{
 		movex += 0.001;	
 		velocity += 0.02f;
@@ -170,19 +170,25 @@ void Player::Jump(float angle)
 
 void Player::TarzanJump(float angle)
 {
-	
+	chargejumpPower = 0.0f;
+	const float MAX_CHARGE = 0.55f;  //最大蓄積可能なジャンプ力
+	const float CHARGE_RATE = 0.02f;//1フレーム当たりの増加量
 
 	if (Input::IsMouseButtonDown(0))
 	{
-		gravity_ += 0.03f;
-		movex += 0.2f;
-		velocity += 0.3f;
+		chargejumpPower += CHARGE_RATE;
+		if (chargejumpPower > MAX_CHARGE)
+		{
+			chargejumpPower = MAX_CHARGE; //蓄積量を超えないようにする
+		}
 	}
-	else if (Input::IsMouseButtonUp(0))
+	else if (Input::IsMouseButtonUp(0) && !isJumping_ )
 	{
-		ptrans_.position_.x += movex;
-		KillAllChildren();
-		isJumping_ = true;
+			//蓄積したジャンプ力を使う
+			velocity = chargejumpPower;
+			isJumping_ = true;
+
+			chargejumpPower = 0.0f;
 	}
 
 }
