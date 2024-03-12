@@ -194,7 +194,10 @@ void Player::TarzanJump(float angle)
 	{
 			//’~Ï‚µ‚½ƒWƒƒƒ“ƒv—Í‚ğg‚¤
 			velocity = chargejumpPower;
-			movex += chargeX;
+
+			ptrans_.position_.x += jumpDirection.x * chargeX;
+			ptrans_.position_.y += jumpDirection.y * chargeX;
+
 			isJumping_ = true;
 
 			chargejumpPower = 0.0f;

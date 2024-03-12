@@ -28,6 +28,8 @@ private:
 	bool chargejump_ = false; 
 	float chargejumpPower;   //ƒWƒƒƒ“ƒv—Í‚ğ’~‚¦‚é
 	float chargeX = 0.0f;    
+	float isRightDirection = -1;
+	XMFLOAT3 jumpDirection = XMFLOAT3(1.0f, 0.0f, 0.0f);
 
 	Aim* pAim_;                     // Æ€
 	AirObject* pAirObject;
