@@ -5,10 +5,9 @@
 class Stage : public GameObject
 {
 private:
-    int hstage[2];
+    int hstage;
 
-    Transform strans;
-    Transform strans2;
+    
 public:
     //コンストラクタ
     Stage(GameObject* parent);

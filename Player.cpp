@@ -161,7 +161,6 @@ void Player::Jump(float angle)
 
 void Player::TarzanJump(float angle)
 {
-	//gravity_ = 0.02f;
 	chargejumpPower = 0.01f;
 	const float MAX_CHARGE = 0.55f;  //最大蓄積可能なジャンプ力
 	const float CHARGE_RATE = 0.02f;//1フレーム当たりの増加量
