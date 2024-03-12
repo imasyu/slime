@@ -4,6 +4,11 @@ class GameOverScene : public GameObject
 {
 private:
 	int hPict_;  //画像番号
+	int hModel_;
+	int OverSlime_;
+
+	Transform htrans;
+	Transform overtrans;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）

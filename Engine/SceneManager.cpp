@@ -8,6 +8,7 @@
 #include "../TitleScene.h"
 #include "../PlayScene.h"
 #include "../GameOverScene.h"
+#include "../GameClearScene.h"
 
 
 //コンストラクタ
@@ -22,7 +23,7 @@ void SceneManager::Initialize()
 	//最初のシーンを準備
 	currentSceneID_ = SCENE_ID_TITLE;
 	nextSceneID_ = currentSceneID_;
-	Instantiate<TitleScene>(this);
+	Instantiate <TitleScene > (this);
 }
 
 //更新
@@ -46,6 +47,7 @@ void SceneManager::Update()
 		case SCENE_ID_TITLE: Instantiate<TitleScene>(this); break;
 		case SCENE_ID_PLAYSCENE: Instantiate<PlayScene>(this); break;
 		case SCENE_ID_GAMEOVER: Instantiate<GameOverScene>(this); break;
+		case SCENE_ID_CLEAR: Instantiate<GameClearScene>(this); break;
 		}
 		Audio::Initialize();
 		currentSceneID_ = nextSceneID_;

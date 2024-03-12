@@ -1,18 +1,18 @@
 #pragma once
 #include "Engine/GameObject.h"
-#include "Engine/Camera.h"
-class TitleScene : public GameObject
+class GameClearScene : public GameObject
 {
 private:
-	int hModel_;  
-	int hSky_;
-	XMFLOAT3 camPos_;
+	int hModel_;
+	int hSlime_;
+	int hPict_;    //画像番号
 
-	Transform ttrans;
+	Transform mojitrans;
+	Transform strans;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
-	TitleScene(GameObject* parent);
+	GameClearScene(GameObject* parent);
 
 	//初期化
 	void Initialize() override;

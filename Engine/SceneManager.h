@@ -9,6 +9,7 @@ enum SCENE_ID
 	SCENE_ID_PLAYSCENE,
 	SCENE_ID_GAMEOVER,
 	SCENE_ID_TITLE,
+	SCENE_ID_CLEAR,
 };
 
 //-----------------------------------------------------------

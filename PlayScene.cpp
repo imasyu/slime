@@ -8,6 +8,8 @@
 #include "Rod.h"
 #include "AirObject.h"
 #include "Engine/Text.h"
+#include "Engine/SceneManager.h"
+#include "Engine/Input.h"
 
 namespace {
 	Text* pText = nullptr;
@@ -38,7 +40,11 @@ void PlayScene::Initialize()
 
 void PlayScene::Update()
 {
-	
+	if (Input::IsKeyDown(DIK_F))
+	{
+		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+		pSceneManager->ChangeScene(SCENE_ID_CLEAR);
+	}
 }
 
 void PlayScene::Draw()

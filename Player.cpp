@@ -81,15 +81,6 @@ void Player::Update()
 
 	TarzanJump(angle);
 
-	if (Input::IsKeyUp(DIK_RETURN))
-	{
-		static int cnt = 0;
-		cnt++;
-		if (cnt >= 1)
-		{
-			PostQuitMessage(0);
-		}
-	}
 }
 
 //•`‰æ
