@@ -170,9 +170,12 @@ void Player::Jump(float angle)
 
 void Player::TarzanJump(float angle)
 {
-	chargejumpPower = 0.0f;
+	//gravity_ = 0.02f;
+	chargejumpPower = 0.01f;
 	const float MAX_CHARGE = 0.55f;  //最大蓄積可能なジャンプ力
 	const float CHARGE_RATE = 0.02f;//1フレーム当たりの増加量
+	const float MAX_CHARGE_X = 0.3f; //横方向の最大可能蓄積量
+	const float CHARGE_RATE_X = 0.015f;//横方向の増加量
 
 	if (Input::IsMouseButtonDown(0))
 	{
@@ -181,14 +184,21 @@ void Player::TarzanJump(float angle)
 		{
 			chargejumpPower = MAX_CHARGE; //蓄積量を超えないようにする
 		}
+
+		chargeX += CHARGE_RATE_X;
+		if (chargeX > MAX_CHARGE_X) {
+			chargeX = MAX_CHARGE_X;
+		}
 	}
 	else if (Input::IsMouseButtonUp(0) && !isJumping_ )
 	{
 			//蓄積したジャンプ力を使う
 			velocity = chargejumpPower;
+			movex += chargeX;
 			isJumping_ = true;
 
 			chargejumpPower = 0.0f;
+			chargeX = 0.0f;
 	}
 
 }

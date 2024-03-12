@@ -27,6 +27,7 @@ private:
 
 	bool chargejump_ = false; 
 	float chargejumpPower;   //ƒWƒƒƒ“ƒv—Í‚ğ’~‚¦‚é
+	float chargeX = 0.0f;    
 
 	Aim* pAim_;                     // Æ€
 	AirObject* pAirObject;
