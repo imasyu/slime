@@ -28,5 +28,5 @@ public:
     //ŠJ•ú
     void Release() override;
 
-    int GetModeHandle() { return hstage; }
+    int GetModelHandle() { return hstage; }
 };

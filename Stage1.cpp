@@ -11,10 +11,10 @@ void Stage1::Initialize()
 {
 	hModel_ = Model::Load("Stage1.fbx");
 
-	transform_.position_ = { 90, 6, 0 };
+	transform_.position_ = { 100, 6, 0 };
 	transform_.scale_ = { 1.0f, 2.0f, 1.0f };
 
-	SphereCollider* collision = new SphereCollider(XMFLOAT3(64, 4, 0), 4.0f);
+	SphereCollider* collision = new SphereCollider(XMFLOAT3(65, -18, 0), 4.0f);
 	AddCollider(collision);
 }
 

@@ -65,7 +65,7 @@ public:
    //ˆø”FpTarget “–‚½‚Á‚½‘Šè
 	void OnCollision(GameObject* pTarget) override;
 
-	void RayCast();
+	void PRayCast();
 
 	void SizeChange();
 

@@ -22,5 +22,7 @@ public:
 
     //ŠJ•ú
     void Release() override;
+
+    int GetModeHandle() { return hModel_; }
 };
 

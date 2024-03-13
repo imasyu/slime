@@ -23,7 +23,7 @@ void JumpRamp::Initialize()
 	transform_.position_ = { 110,4,0 };
 	transform_.scale_ = { 0.5f,1.0f,0.5f };
 
-	//Model::SetAnimFrame(hModel_, 1, 60, 1);
+	
 
 	
 }

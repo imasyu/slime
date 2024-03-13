@@ -9,6 +9,7 @@
 #include "Engine/SphereCollider.h"
 #include "Engine/SceneManager.h"
 #include "Engine/Text.h"
+#include "Stage1.h"
 
 namespace {
 	Text* pText = nullptr;
@@ -40,7 +41,7 @@ void Player::Initialize()
 //更新
 void Player::Update()
 {
-	RayCast();
+	//PRayCast();
 	Jump(angle);
 
 	transform_ = ptrans_;
@@ -57,6 +58,7 @@ void Player::Update()
 
 	RayCastData data;
 	data.start = ptrans_.position_;    //レイの発射位置
+	data.start.y = 0;
 	data.dir = XMFLOAT3(0, 1, 0);         //レイの方向
 	Model::RayCast(hGroundModel, &data);  //レイを発射
 
@@ -74,7 +76,7 @@ void Player::Update()
 		if (data.hit)
 		{
 			//その分あげる
-			ptrans_.position_.y += data.dist - 5;
+			ptrans_.position_.y = data.dist -5;
 
 			
 		}
@@ -213,36 +215,40 @@ void Player::OnCollision(GameObject* pTarget)
 	}
 }
 
-void Player::RayCast()
+void Player::PRayCast()
 {
-	//Stage* pStage = (Stage*)FindObject("Stage");    //ステージオブジェクトを探す
-	//int hGroundModel = pStage->GetModelHandle();    //モデル番号を取得
+	Stage* pStage = (Stage*)FindObject("Stage");    //ステージオブジェクトを探す
+	int hstageModel = pStage->GetModelHandle();    //モデル番号を取得
 
-	//RayCastData stage;
-	//RayCastData front;
-	//RayCastData back;
+	RayCastData stage;
 
-	////下の当たり判定
-	//stage.start = transform_.position_;   //レイの発射位置
-	//stage.start.y = 0;
-	//stage.dir = XMFLOAT3(0, -1, 0);       //レイの方向
-	//Model::RayCast(hGroundModel, &stage); //レイを発射
+	Stage1* pStage1 = (Stage1*)FindObject("Stage1");
+	int hstage1Model = pStage1->GetModelHandle();
 
-	////レイが当たったら
-	//if (stage.hit)
-	//{
-	//	//その分位置を下げる
-	//	transform_.position_.y -= stage.dist;
-	//}
+	RayCastData front;
+	
+	//下の当たり判定
+	stage.start = ptrans_.position_;   //レイの発射位置
+	stage.start.y = 0;
+	stage.dir = XMFLOAT3(0, -1, 0);       //レイの方向
+	Model::RayCast(hstageModel, &stage); //レイを発射
 
-	////壁の当たり判定
-	//front.start = transform_.position_;
-	//front.dir = XMFLOAT3(1, 1, 0);
-	//Model::RayCast(hGroundModel, &front);
-	//if (front.hit)
-	//{
+	//レイが当たったら
+	if (stage.hit)
+	{
+		//その分位置を下げる
+		ptrans_.position_.y = -stage.dist;
+	}
 
-	//}
+	
+	front.start = ptrans_.position_;
+	front.start.y = 0;
+	front.dir = XMFLOAT3(0, -1, 0);
+	Model::RayCast(hstage1Model, &front);
+	if (front.hit)
+	{
+		ptrans_.position_.y -= front.dist;
+	}
 }
 
 void Player::SizeChange()
