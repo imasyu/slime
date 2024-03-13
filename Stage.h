@@ -7,6 +7,7 @@ class Stage : public GameObject
 private:
     int hstage;
 
+    Transform tstage;
     
 public:
     //コンストラクタ
@@ -27,5 +28,5 @@ public:
     //開放
     void Release() override;
 
-    int GetModeHandle() { return hstage[3]; }
+    int GetModeHandle() { return hstage; }
 };

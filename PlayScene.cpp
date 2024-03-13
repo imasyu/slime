@@ -7,6 +7,7 @@
 #include "SkyBox.h"
 #include "Rod.h"
 #include "AirObject.h"
+#include "Stage1.h"
 #include "Engine/Text.h"
 #include "Engine/SceneManager.h"
 #include "Engine/Input.h"
@@ -29,10 +30,10 @@ void PlayScene::Initialize()
 	Instantiate<Player>(this);
 	Instantiate<Stage>(this);
 	Instantiate<Enemy>(this);
-	//Instantiate<JumpRamp>(this);
+	Instantiate<JumpRamp>(this);
 	Instantiate<Ceiling>(this);
-	//Instantiate<SkyBox>(this);
-	//Instantiate<AirObject>(this);
+	Instantiate<SkyBox>(this);
+	Instantiate<Stage1>(this);
 
 	pText = new Text();
 	pText->Initialize();

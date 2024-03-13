@@ -27,8 +27,8 @@ void Player::Initialize()
 
 	ptrans_.position_.x = -20;
 
-	/*pAim_ = Instantiate<Aim>(this);
-	pAim_->SetPlayer(this);*/
+	pAim_ = Instantiate<Aim>(this);
+	pAim_->SetPlayer(this);
 
 	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0, 0), (1.0f));
 	AddCollider(collision);
@@ -40,6 +40,7 @@ void Player::Initialize()
 //更新
 void Player::Update()
 {
+	RayCast();
 	Jump(angle);
 
 	transform_ = ptrans_;
@@ -204,6 +205,44 @@ void Player::OnCollision(GameObject* pTarget)
 		movex = 0.3f;
 		velocity += 0.1f;
 	}
+
+	if (pTarget->GetObjectName() == "Stage1")
+	{
+		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+		pSceneManager->ChangeScene(SCENE_ID_CLEAR);
+	}
+}
+
+void Player::RayCast()
+{
+	//Stage* pStage = (Stage*)FindObject("Stage");    //ステージオブジェクトを探す
+	//int hGroundModel = pStage->GetModelHandle();    //モデル番号を取得
+
+	//RayCastData stage;
+	//RayCastData front;
+	//RayCastData back;
+
+	////下の当たり判定
+	//stage.start = transform_.position_;   //レイの発射位置
+	//stage.start.y = 0;
+	//stage.dir = XMFLOAT3(0, -1, 0);       //レイの方向
+	//Model::RayCast(hGroundModel, &stage); //レイを発射
+
+	////レイが当たったら
+	//if (stage.hit)
+	//{
+	//	//その分位置を下げる
+	//	transform_.position_.y -= stage.dist;
+	//}
+
+	////壁の当たり判定
+	//front.start = transform_.position_;
+	//front.dir = XMFLOAT3(1, 1, 0);
+	//Model::RayCast(hGroundModel, &front);
+	//if (front.hit)
+	//{
+
+	//}
 }
 
 void Player::SizeChange()

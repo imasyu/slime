@@ -160,6 +160,7 @@
     <ClCompile Include="Rod.cpp" />
     <ClCompile Include="SkyBox.cpp" />
     <ClCompile Include="Stage.cpp" />
+    <ClCompile Include="Stage1.cpp" />
     <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
@@ -199,6 +200,7 @@
     <ClInclude Include="Rod.h" />
     <ClInclude Include="SkyBox.h" />
     <ClInclude Include="Stage.h" />
+    <ClInclude Include="Stage1.h" />
     <ClInclude Include="TestScene.h" />
     <ClInclude Include="TitleScene.h" />
   </ItemGroup>

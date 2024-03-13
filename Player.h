@@ -31,6 +31,8 @@ private:
 	float isRightDirection = -1;
 	XMFLOAT3 jumpDirection = XMFLOAT3(1.0f, 0.0f, 0.0f);
 
+	float rayfront;
+
 	Aim* pAim_;                     // Æ€
 	AirObject* pAirObject;
 	PlayScene* pPlayScene;
@@ -62,6 +64,8 @@ public:
 	//‰½‚©‚É“–‚½‚Á‚½
    //ˆø”FpTarget “–‚½‚Á‚½‘Šè
 	void OnCollision(GameObject* pTarget) override;
+
+	void RayCast();
 
 	void SizeChange();
 

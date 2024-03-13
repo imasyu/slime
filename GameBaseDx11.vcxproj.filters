@@ -112,6 +112,7 @@
     <ClCompile Include="AirObject.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="GameClearScene.cpp" />
+    <ClCompile Include="Stage1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -197,6 +198,7 @@
     <ClInclude Include="AirObject.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="GameClearScene.h" />
+    <ClInclude Include="Stage1.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">
