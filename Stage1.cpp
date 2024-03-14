@@ -14,7 +14,7 @@ void Stage1::Initialize()
 	transform_.position_ = { 100, 6, 0 };
 	transform_.scale_ = { 1.0f, 2.0f, 1.0f };
 
-	SphereCollider* collision = new SphereCollider(XMFLOAT3(65, -18, 0), 4.0f);
+	SphereCollider* collision = new SphereCollider(XMFLOAT3(65, 0, 0), 4.0f);
 	AddCollider(collision);
 }
 
